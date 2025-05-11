@@ -1,0 +1,473 @@
+body {
+    background-color: white;
+    color: rgb(0, 0, 0);
+    font-family: 'Poppins', sans-serif;
+}
+
+#header {
+    width: 100%;
+    height: 100vh;
+    background-position: center;
+    background-size: cover;
+    background-image: url(); /* Add actual background image URL */
+}
+
+.container {
+    padding: 0 5%;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: black;
+    padding: 10px 5%;
+}
+
+nav h1 {
+    color: rgb(25, 144, 224);
+    font-size: 38px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+}
+
+nav ul {
+    display: flex;
+    padding: 0;
+    margin: 10px;
+}
+
+nav ul li {
+    list-style: none;
+}
+
+nav ul li a {
+    display: inline-block;
+    text-decoration: none;
+    background-color: rgb(84, 4, 4);
+    color: antiquewhite;
+    font-size: 17px;
+    padding: 8px 16px;
+    border-radius: 20px;
+    transition: 0.3s;
+    margin: 0 10px;
+}
+
+nav ul li a:hover {
+    background-color: blanchedalmond;
+    color: rgb(84, 4, 4);
+}
+
+/* --- Header Text Section --- */
+.header-text {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 40px 5%;
+    gap: 40px;
+    flex-wrap: wrap; /* Responsive layout on small screens */
+    background-color:burlywood;
+}
+
+.header-text .text {
+    flex: 1;
+    padding: 20px;
+    font-size: 18px;
+    line-height: 1.6;
+}
+
+.header-text .text h1 {
+    font-size: 36px;
+    margin-top: 10px;
+    color: #222;
+}
+.header-text .text h4 {
+    font-size: 20px;
+    margin-top: 10px;
+    color: #666666;
+}
+.header-text .text p{
+   font-family: 'Trebuchet MS', sans-serif;
+    color: #333333;
+    font-style: italic;
+}
+
+/* --- Profile Image --- */
+.header-text .profile img {
+    width: 250px;
+    height: 300px;
+    border-radius: 30%;
+    object-fit: cover;
+}
+
+/* --- Links Image (e.g., LinkedIn) --- */
+.header-text .links img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-top: 30px;
+    margin-left: 10px;
+}
+
+/* Optional: Stack links below profile image */
+.header-text .profile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.header-text .links {
+    display: flex;
+    justify-content: center;
+}
+.header-text .links li{
+    list-style-type: none;
+}
+.projects{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 5%;
+    gap: 40px;
+    flex-wrap: wrap; /* Responsive layout on small screens */
+    background-color:rgb(248, 192, 119);
+}
+.projects .mediguide {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 5%;
+}
+.projects .mediguide img{
+    width: 250px;
+    height: 250px;
+    border-radius: 10%;
+    object-fit: cover;
+    padding: 0vw 5vw 0vw 5vw;
+    border-radius: 35%;
+}
+.mediguide .image-container1 {
+    position: relative;
+    display: inline-block;
+}
+
+.mediguide .image-detail1 {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, 20px);
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 14px;
+    opacity: 0;
+    transition: 
+        opacity 0.4s ease-in-out,
+        transform 0.4s ease-in-out,
+        background-color 0.4s ease-in-out;
+}
+
+.image-container1:hover .image-detail1 {
+    opacity: 1;
+    transform: translate(-50%, 0);
+    background-color: rgb(84, 4, 4); /* New color on hover */
+    padding: 10px 30px;
+
+}
+
+.mediguide-description {
+    font-family: 'Playfair Display', serif; /* Elegant and modern */
+    font-size: 20px;
+    font-style: italic; /* Adds a subtle elegant touch */
+    color: #444; /* Dark gray for better readability */
+    line-height: 1.6;
+    background-color:bisque;
+    padding: 10px;
+    border-radius: 30px;
+}
+
+.mediguide-description h2{
+    color: black;
+    align-items: center;
+    justify-content: center;
+    text-decoration: underline;
+}
+ .student-sphere .mediguide-description h2{
+    color: black;
+    align-items: center;
+    justify-content: center;
+    text-decoration: underline;
+ }
+
+.student-sphere-description {
+    font-family: 'Playfair Display', serif; /* Elegant and modern */
+    font-size: 20px;
+    font-style: italic; /* Adds a subtle elegant touch */
+    color: #444; /* Dark gray for better readability */
+    line-height: 1.6;
+    background-color:bisque;
+    padding: 10px;
+    border-radius: 30px;
+}
+
+.student-sphere .image-container2 {
+    position: relative;
+    display: inline-block;
+}
+
+.student-sphere.image-detail2 {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, 20px);
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 14px;
+    opacity: 0;
+    transition: 
+        opacity 0.4s ease-in-out,
+        transform 0.4s ease-in-out,
+        background-color 0.4s ease-in-out;
+}
+
+.image-container2:hover .image-detail2 {
+    opacity: 1;
+    transform: translate(-50%, 0);
+    background-color: rgb(84, 4, 4); /* New color on hover */
+    padding: 10px 30px;
+
+}
+.projects .student-sphere {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 5%;
+}
+.projects .student-sphere img{
+    width: 250px;
+    height: 250px;
+    border-radius: 10%;
+    object-fit: cover;
+    padding: 0vw 5vw 0vw 5vw;
+    border-radius: 35%;
+}
+.about{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 5%;
+    gap: 40px;
+    flex-wrap: wrap; /* Responsive layout on small screens */
+    background-color:burlywood;
+}
+.about .about-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 5%;
+}
+.about .about-section img{
+    width: 300px;
+    height: 300px;
+    border-radius: 10%;
+    object-fit: cover;
+    padding: 0vw 2vw 0vw 2vw;
+    border-radius: 35%;
+}
+.about-section .image-container1 {
+    position: relative;
+    display: inline-block;
+}
+
+.about-section .image-detail1 {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, 20px);
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 14px;
+    opacity: 0;
+    transition: 
+        opacity 0.4s ease-in-out,
+        transform 0.4s ease-in-out,
+        background-color 0.4s ease-in-out;
+}
+
+.image-container1:hover .image-detail1 {
+    opacity: 1;
+    transform: translate(-50%, 0);
+    background-color: rgb(84, 4, 4); /* New color on hover */
+    padding: 10px 30px;
+
+}
+
+.about-section-description {
+   font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    color: #444; /* Dark gray for better readability */
+    line-height: 1.6;
+    background-color:bisque;
+    padding: 10px;
+    border-radius: 30px;
+}
+
+.about-section-description h2{
+    color: black;
+    align-items: center;
+    justify-content: center;
+}
+
+.about-section-description h4{
+    color: black;
+    align-items: center;
+    justify-content: center;
+    text-decoration: underline;
+}
+
+.achivements{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 5%;
+    gap: 40px;
+    flex-wrap: wrap; /* Responsive layout on small screens */
+    background-color:burlywood;
+}
+
+.achivements .achivements-section img{
+    width: 300px;
+    height: 300px;
+    border-radius: 10%;
+    object-fit: cover;
+    padding: 0vw 5vw 0vw 5vw;
+    border-radius: 35%;
+}
+
+.achivements-section .image-container1 {
+    position: relative;
+    display: inline-block;
+}
+
+.achivements-section .image-detail1 {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, 20px);
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 14px;
+    opacity: 0;
+    transition: 
+        opacity 0.4s ease-in-out,
+        transform 0.4s ease-in-out,
+        background-color 0.4s ease-in-out;
+}
+
+.image-container1:hover .image-detail1 {
+    opacity: 1;
+    transform: translate(-50%, 0);
+    background-color: rgb(84, 4, 4); /* New color on hover */
+    padding: 10px 30px;
+
+}
+
+.achivements-section-description {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-style: italic;
+    color: #444;
+    line-height: 1.6;
+    background-color:bisque;
+    padding: 10px;
+    border-radius: 30px;
+}
+
+.achivements-section-description h2{
+    color: black;
+    align-items: center;
+    justify-content: center;
+    text-decoration: underline;
+}
+
+/* ------------------------ Responsive Design ------------------------ */
+
+@media (max-width: 768px) {
+    nav {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    nav ul {
+        flex-direction: column;
+        width: 100%;
+        margin: 0;
+    }
+
+    nav ul li {
+        width: 100%;
+        text-align: center;
+        margin: 5px 0;
+    }
+
+    .header-text,
+    .projects,
+    .about,
+    .achivements {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 20px 5%;
+    }
+
+    .header-text .text,
+    .projects .mediguide,
+    .projects .student-sphere,
+    .about .about-section,
+    .achivements .achivements-section {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .header-text .profile img,
+    .projects .mediguide img,
+    .projects .student-sphere img,
+    .about .about-section img,
+    .achivements .achivements-section img {
+        width: 80%;
+        height: auto;
+        max-width: 300px;
+        margin-bottom: 20px;
+    }
+
+    .header-text .links {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .header-text .links img {
+        margin: 10px;
+    }
+
+    .mediguide-description,
+    .student-sphere-description,
+    .about-section-description,
+    .achivements-section-description {
+        font-size: 16px;
+        padding: 10px;
+    }
+
+    .contacts .container {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+}
