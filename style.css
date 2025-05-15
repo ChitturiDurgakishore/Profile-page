@@ -338,7 +338,7 @@ nav ul li a:hover {
     padding: 20px 5%;
     gap: 40px;
     flex-wrap: wrap; /* Responsive layout on small screens */
-    background-color:burlywood;
+    background-color:rgb(248, 192, 119);
 }
 
 .achivements .achivements-section img{
