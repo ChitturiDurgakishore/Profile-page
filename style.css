@@ -340,6 +340,9 @@ nav ul li a:hover {
     flex-wrap: wrap; /* Responsive layout on small screens */
     background-color:burlywood;
 }
+.achivements {
+    background-color: burlywood !important;
+}
 
 .achivements .achivements-section img{
     width: 300px;
