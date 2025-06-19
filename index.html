@@ -3,106 +3,447 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/png" href="kishore3.jpeg">
+    <title>Durga Kishore - Portfolio</title>
+    <!-- Favicon - using a placeholder image for demonstration -->
+    <link rel="icon" type="image/png" href="https://placehold.co/32x32/1E3A8A/ffffff?text=DK">
 
-    <link rel="stylesheet" href="style.css">
-    <title>Durga Kishore</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+        /* Custom styles for font and specific overrides */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0d0d0d; /* Very dark background */
+            color: #e0e0e0; /* Light gray text for readability */
+        }
+
+        /* General button styling - expanded from @apply */
+        .btn-primary {
+            padding-left: 1.5rem; /* px-6 */
+            padding-right: 1.5rem; /* px-6 */
+            padding-top: 0.75rem; /* py-3 */
+            padding-bottom: 0.75rem; /* py-3 */
+            background-color: #1d4ed8; /* bg-blue-700 */
+            color: #ffffff; /* text-white */
+            font-size: 1.125rem; /* text-lg */
+            line-height: 1.75rem; /* text-lg */
+            border-radius: 9999px; /* rounded-full */
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* shadow-lg */
+            transition-property: all; /* transition */
+            transition-duration: 300ms; /* duration-300 */
+            transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1); /* ease-in-out */
+            display: inline-block; /* Ensure padding and transform work correctly */
+            font-weight: 600; /* Semi-bold for buttons */
+        }
+        .btn-primary:hover {
+            background-color: #2563eb; /* hover:bg-blue-600 */
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1); /* hover:shadow-xl */
+            transform: translateY(-4px); /* hover:-translate-y-1 */
+        }
+
+        /* Mobile Menu specific styles */
+        .nav-links {
+            transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+        }
+        .nav-links.active {
+            max-height: 200px; /* Adjust based on content */
+            opacity: 1;
+        }
+
+        /* Specific hover effect for project images */
+        .project-image-container {
+            position: relative;
+            overflow: hidden;
+            border-radius: 1.75rem; /* rounded-3xl */
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3); /* Darker shadow for dark mode */
+            cursor: pointer;
+        }
+
+        .project-image-container img {
+            transition: transform 0.4s ease-in-out;
+        }
+
+        .project-image-container:hover img {
+            transform: scale(1.08); /* Slightly more zoom */
+        }
+
+        .project-details {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.95), rgba(0, 0, 0, 0)); /* Very dark gradient */
+            color: white;
+            padding: 1.5rem 1rem; /* More padding */
+            transform: translateY(100%);
+            transition: transform 0.4s ease-in-out;
+            border-bottom-left-radius: 1.75rem;
+            border-bottom-right-radius: 1.75rem;
+            text-align: center; /* Center text within details */
+            font-size: 0.9rem; /* Smaller text for detail */
+        }
+
+        .project-image-container:hover .project-details {
+            transform: translateY(0);
+        }
+
+        .project-details a {
+            color: #38bdf8; /* Tailwind sky-400 for neon link */
+            text-decoration: underline;
+            font-weight: 600;
+            transition: color 0.2s;
+        }
+        .project-details a:hover {
+            color: #7dd3fc; /* Lighter sky on hover */
+        }
+
+        /* Achievements grid images */
+        .achievements-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* More flexible for smaller screens */
+            gap: 1.5rem;
+            padding: 1rem;
+            justify-items: center;
+        }
+
+        @media (min-width: 640px) { /* sm breakpoint */
+            .achievements-grid {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            }
+        }
+
+        @media (min-width: 1024px) { /* lg breakpoint */
+            .achievements-grid {
+                grid-template-columns: repeat(4, 1fr); /* Fixed 4 columns on large screens */
+            }
+        }
+
+        .achievements-grid img {
+            width: 100%;
+            max-width: 280px; /* Slightly larger max-width */
+            height: 280px; /* Maintain aspect ratio */
+            object-fit: cover;
+            border-radius: 1.75rem; /* rounded-3xl */
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4); /* Nicer shadow for dark mode */
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            border: 4px solid #4a4a4a; /* Darker border for crispness */
+        }
+        .achievements-grid img:hover {
+            transform: scale(1.05); /* Increased scale */
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.6);
+        }
+
+        /* Animation Keyframes */
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInLeft {
+            from { opacity: 0; transform: translateX(-20px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInRight {
+            from { opacity: 0; transform: translateX(20px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .animate-fade-in-down { animation: fadeInDown 0.8s ease-out forwards; }
+        .animate-fade-in-left { animation: fadeInLeft 0.8s ease-out forwards; }
+        .animate-fade-in-up { animation: fadeInUp 0.8s ease-out forwards; }
+        .animate-fade-in-right { animation: fadeInRight 0.8s ease-out forwards; }
+
+        /* Animation delays */
+        .animation-delay-200 { animation-delay: 0.2s; }
+        .animation-delay-400 { animation-delay: 0.4s; }
+        .animation-delay-600 { animation-delay: 0.6s; }
+        .animation-delay-800 { animation-delay: 0.8s; }
+        .animation-delay-1000 { animation-delay: 1.0s; }
+
+        /* General section padding for better visual spacing */
+        section {
+            padding-top: 4rem; /* 64px */
+            padding-bottom: 4rem; /* 64px */
+        }
+        @media (min-width: 768px) { /* md breakpoint */
+            section {
+                padding-top: 6rem; /* 96px */
+                padding-bottom: 6rem; /* 96px */
+            }
+        }
+    </style>
 </head>
-<body>
-    <div id="header">
-        <div class="container">
-            <nav>
-                <h1>KISHORE</h1>
-                <ul>
-                    <li><a href="index.html">HOME</a></li>
-                    <li><a href="https://drive.google.com/file/d/1OX8O64_p68av2xR_pkr1Jo6kdYFg086Z/view?usp=sharing">RESUME</a></li>
-                    <li><a href="mailto:chitturidurgakishore@gmail.com">CONTACT</a></li>
+<body class="antialiased">
+    <!-- Header Section -->
+    <header id="header" class="w-full bg-gradient-to-r from-gray-950 to-gray-800 py-4 shadow-lg sticky top-0 z-50">
+        <div class="container mx-auto px-4 flex items-center justify-between">
+            <h1 class="text-4xl font-extrabold text-cyan-400 font-['Segoe_UI']">DURGA KISHORE</h1>
+            <!-- Mobile Menu Button (Hamburger) -->
+            <button id="menu-button" class="md:hidden text-white focus:outline-none">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+            <nav id="navbar" class="hidden md:flex">
+                <ul class="flex flex-col md:flex-row space-y-3 md:space-y-0 md:space-x-8">
+                    <li><a href="#home" class="btn-primary">HOME</a></li>
+                    <li><a href="https://drive.google.com/file/d/1OX8O64_p68av2xR_pkr1Jo6kdYFg086Z/view?usp=sharing" target="_blank" class="btn-primary">RESUME</a></li>
+                    <li><a href="mailto:chitturidurgakishore@gmail.com" class="btn-primary">CONTACT</a></li>
                 </ul>
             </nav>
-            <div class="header-text">
-                <div class="text">
-                    <h1>Hi ! I Am Kishore </h1>
-                    <h4><i>Full Stack Developer</i></h4>
-                    <h4><i>Algorithm Engineer</i></h4>
-                    <p>Passionate about data structures, algorithms, and backend development. I craft optimized solutions, design scalable architectures, and build seamless integrations to drive efficiency and performance.</p>
+        </div>
+        <!-- Mobile Menu (toggled by JS) -->
+        <nav id="mobile-menu" class="nav-links md:hidden bg-gray-900 py-4 text-center">
+            <ul class="flex flex-col space-y-4">
+                <li><a href="#home" class="block py-2 text-white text-lg hover:bg-gray-700 rounded-md mx-4">HOME</a></li>
+                <li><a href="https://drive.google.com/file/d/1OX8O64_p68av2xR_pkr1Jo6kdYFg086Z/view?usp=sharing" target="_blank" class="block py-2 text-white text-lg hover:bg-gray-700 rounded-md mx-4">RESUME</a></li>
+                <li><a href="mailto:chitturidurgakishore@gmail.com" class="block py-2 text-white text-lg hover:bg-gray-700 rounded-md mx-4">CONTACT</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="bg-gradient-to-br from-gray-900 to-indigo-950 py-16 md:py-24 overflow-hidden">
+        <div class="container mx-auto px-4 flex flex-col md:flex-row items-center justify-center gap-10 md:gap-20">
+            <div class="text-center md:text-left md:w-1/2 lg:w-2/3">
+                <h1 class="text-5xl md:text-6xl font-extrabold text-white mb-4 animate-fade-in-down">Hi! I Am Durga Kishore</h1>
+                <h4 class="text-2xl md:text-3xl font-semibold text-cyan-400 italic mb-4 animate-fade-in-left animation-delay-200"><i>Full Stack Developer</i></h4>
+                <h4 class="text-2xl md:text-3xl font-semibold text-cyan-400 italic mb-6 animate-fade-in-left animation-delay-400"><i>Algorithm Engineer</i></h4>
+                <ul class="text-lg md:text-xl text-gray-200 leading-relaxed font-['Inter'] list-disc pl-5 animate-fade-in-up animation-delay-600 space-y-2">
+                    <li>Passionate about data structures, algorithms, and backend development.</li>
+                    <li>Craft optimized solutions, design scalable architectures, and build seamless integrations.</li>
+                    <li>Focused on driving efficiency and performance in every project.</li>
+                </ul>
+                <div class="flex justify-center md:justify-start mt-10 space-x-7 animate-fade-in-up animation-delay-800">
+                    <a href="https://github.com/ChitturiDurgakishore?tab=repositories" target="_blank" class="transform hover:scale-110 transition duration-300">
+                        <img src="https://placehold.co/48x48/1A202C/FFFFFF?text=GH" alt="GitHub" class="w-12 h-12 rounded-full shadow-lg border-2 border-gray-600" onerror="this.onerror=null;this.src='https://placehold.co/48x48/1A202C/FFFFFF?text=GH';">
+                    </a>
+                    <a href="https://www.linkedin.com/in/durga-kishore-chitturi" target="_blank" class="transform hover:scale-110 transition duration-300">
+                        <img src="https://placehold.co/48x48/0077B5/FFFFFF?text=LI" alt="LinkedIn" class="w-12 h-12 rounded-full shadow-lg border-2 border-gray-600" onerror="this.onerror=null;this.src='https://placehold.co/48x48/0077B5/FFFFFF?text=LI';">
+                    </a>
+                    <a href="https://leetcode.com/u/ChitturiDurgaKishore/" target="_blank" class="transform hover:scale-110 transition duration-300">
+                        <img src="https://placehold.co/48x48/FFA116/FFFFFF?text=LC" alt="LeetCode" class="w-12 h-12 rounded-full shadow-lg border-2 border-gray-600" onerror="this.onerror=null;this.src='https://placehold.co/48x48/FFA116/FFFFFF?text=LC';">
+                    </a>
                 </div>
-                <div class="profile">
-                    <img src="kishore3.jpeg">
+            </div>
+            <div class="md:w-1/2 lg:w-1/3 flex justify-center mt-10 md:mt-0 animate-fade-in-up animation-delay-1000">
+                <img src="https://placehold.co/280x350/2d2d2d/cccccc?text=Profile+Pic" alt="Kishore's Profile" class="w-72 h-88 object-cover rounded-3xl shadow-2xl border-4 border-gray-700 transform hover:scale-105 transition duration-500" onerror="this.onerror=null;this.src='https://placehold.co/280x350/2d2d2d/cccccc?text=Profile+Pic';">
+            </div>
+        </div>
+    </section>
+
+    <!-- About Me Section -->
+    <section id="about" class="bg-gradient-to-br from-gray-800 to-teal-900 py-16 md:py-24 overflow-hidden">
+        <div class="container mx-auto px-4 flex flex-col-reverse md:flex-row items-center justify-center gap-10 md:gap-20">
+            <div class="md:w-1/2 lg:w-1/3 flex justify-center mt-10 md:mt-0 animate-fade-in-up">
+                <img src="https://placehold.co/300x300/2d2d2d/cccccc?text=About+Me+Pic" alt="Kishore About" class="w-80 h-80 object-cover rounded-3xl shadow-2xl border-4 border-gray-700 transform hover:scale-105 transition duration-500" onerror="this.onerror=null;this.src='https://placehold.co/300x300/2d2d2d/cccccc?text=About+Me+Pic';">
+            </div>
+            <div class="text-center md:text-left md:w-1/2 lg:w-2/3 p-8 bg-gray-800 rounded-3xl shadow-xl animate-fade-in-right animation-delay-200 border border-gray-700">
+                <h2 class="text-4xl md:text-5xl font-extrabold text-white mb-4 text-center">DURGA KISHORE</h2>
+                <h4 class="text-xl md:text-2xl font-semibold text-emerald-300 underline mb-6 text-center">About Me</h4>
+                <ul class="text-lg md:text-xl text-gray-200 leading-relaxed list-disc pl-5 space-y-2">
+                    <li>Hailing from the tech-driven heart of <b>Hitech City</b>, Hyderabad.</li>
+                    <li>Passionate <b>Software Engineer</b> with a keen eye for logic and innovation.</li>
+                    <li>Immerses daily in Data Structures & Algorithms, refining problem-solving skills.</li>
+                    <li>Driven by innovation and continuous learning to contribute to impactful industry-level projects.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-16 md:py-24 bg-gradient-to-br from-gray-900 to-fuchsia-950 overflow-hidden">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-4xl md:text-5xl font-extrabold text-white mb-12 animate-fade-in-down">Technical Skills</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-gray-800 p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 border border-gray-700 animate-fade-in-up animation-delay-200">
+                    <h3 class="text-2xl font-semibold text-amber-300 mb-4">Programming Languages</h3>
+                    <ul class="list-disc list-inside text-lg text-gray-200 space-y-2">
+                        <li>C++ (DSA with C++)</li>
+                        <li>JavaScript</li>
+                        <li>PHP</li>
+                    </ul>
                 </div>
-                <div class="links">
-                    <ul>
-                        <li><a href="https://github.com/ChitturiDurgakishore?tab=repositories"><img src="github.png"></a></li>
-                        <li><a href="https://www.linkedin.com/in/durga-kishore-chitturi"><img src="linkedin.png"></a></li>
-                        <li><a href="https://leetcode.com/u/ChitturiDurgaKishore/"><img src="leetcode.svg"></a></li>
+                <div class="bg-gray-800 p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 border border-gray-700 animate-fade-in-up animation-delay-400">
+                    <h3 class="text-2xl font-semibold text-amber-300 mb-4">Web Development</h3>
+                    <ul class="list-disc list-inside text-lg text-gray-200 space-y-2">
+                        <li>HTML</li>
+                        <li>CSS</li>
+                        <li>Bootstrap</li>
+                        <li>Laravel Framework</li>
+                    </ul>
+                </div>
+                <div class="bg-gray-800 p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 border border-gray-700 animate-fade-in-up animation-delay-600">
+                    <h3 class="text-2xl font-semibold text-amber-300 mb-4">Database & APIs</h3>
+                    <ul class="list-disc list-inside text-lg text-gray-200 space-y-2">
+                        <li>MySQL</li>
+                        <li>RESTful APIs</li>
+                        <li>CRUD operations</li>
+                        <li>Thunder Client (API Testing)</li>
                     </ul>
                 </div>
             </div>
-            
-            <div class="projects">
-                <div class="mediguide">
-                    <div class="image-container1">
-                        <a href="https://github.com/ChitturiDurgakishore/Mediguide"><img src="mediguide.jpeg" alt="Study App"></a>
-                        <div class="image-detail1">Click on image <center><br>to visit</center> <br> <center>Medi-Guide</center></div>
-                    </div>
-                    <div class="mediguide-description">
-                        <center><h2>MEDI-GUIDE</h2></center>
-                         <p><b>Mediguide</b> is a user-friendly application designed to assist individuals in managing their medications efficiently. Whether it's tracking prescriptions, getting dosage reminders, or accessing essential health information, Mediguide simplifies healthcare management. With intuitive features and a clean interface, it ensures users stay informed and organized about their medical needs.</p>
-                        <h3 style="color:black"><a href="https://medi-guide.free.nf/">Website Link</a></h3>
-                    </div>
-                </div>
-                <div class="student-sphere">
-                    <div class="mediguide-description">
-                        <center><h2>STUDENT-SPHERE</h2></center>
-                        <p><b>Student-sphere</b> is a  website based on JS which allows student user toupload their study material and pdfs which can be accesed by other student . instead of searching for pdfs in every time this web app will provide easy access and also saves a lot of time and storage .</p>
-                        <h3 style="color:black"><a href="https://studentsphere.free.nf/">Website Link</a></h3>
-                    </div>
-                    <div class="image-container2">
-                        <a href="https://studentsphere.free.nf/"><img src="studentsphere.png" alt="Study App"></a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-            <div class="about">
-                <div class="about-section">
-                    <div class="image-container1">
-                        <a href="youtube.com"><img src="kishore1.jpeg" alt="Study App"></a>
-                    </div>
-                    <div class="about-section-description">
-                        <center><h2>DURGA KISHORE</h2></center>
-                        <center><h4>About Me </h4></center>
-                         <p>Hailing from the tech-driven heart of  <b>Hitech City</b>,Hyderabad, I am a passionate <b>Software Engineer </b> a keen eye for logic and innovation. Every day, I immerse myself in the intricacies of Data Structures & Algorithms, refining my problem-solving skills and shaping efficient solutions.</p>
-                         <p>Driven by innovation and continuous learning, I strive to refine my technical skills and contribute to impactful industry-level projects that push boundaries and create meaningful value</p>
-                    </div>
-                </div>
-            </div>
+        </div>
+    </section>
 
-            <div class="achivements">
-                <div class="achivements-section">
-                    <div class="images">
-                        <marquee behavior="scroll" direction="right" scrollamount="7">
-                            <img src="specathon.jpeg" alt="SPECATHON">
-                           <img src="kabaddi4.jpeg">
-                           <img src="codestrome.jpeg">
-                           <img src="kabaddi5.jpeg">
-                           <img src="handball.jpeg">
-                           <img src="kabaddi3.jpeg">
-                           <img src="kabaddi6.jpeg">
-                            <img src="kabaddi.jpeg">
-                        </marquee>
+    <!-- Experience Section -->
+    <section id="experience" class="bg-gradient-to-br from-gray-800 to-blue-950 py-16 md:py-24 overflow-hidden">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-4xl md:text-5xl font-extrabold text-white mb-12 animate-fade-in-down">Professional Experience</h2>
+            <div class="bg-gray-800 p-8 rounded-3xl shadow-xl max-w-3xl mx-auto animate-fade-in-up animation-delay-200 border border-gray-700">
+                <h3 class="text-2xl md:text-3xl font-semibold text-lime-300 mb-2">SDE Intern</h3>
+                <p class="text-xl text-gray-200 mb-4">Techsprout Solutions | June 2025 - Present</p>
+                <ul class="list-disc list-inside text-lg text-gray-200 text-left space-y-2">
+                    <li>Developing a job portal using Laravel, MySQL, Bootstrap, and RESTful APIs.</li>
+                    <li>Designed RESTful APIs for efficient data exchange.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="bg-gradient-to-br from-gray-900 to-red-950 py-16 md:py-24 overflow-hidden">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-4xl md:text-5xl font-extrabold text-white mb-12 animate-fade-in-down">Project Experience</h2>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <!-- Medi-Guide Project -->
+                <div class="flex flex-col md:flex-row items-center bg-gray-800 p-6 rounded-3xl shadow-lg gap-6 animate-fade-in-left animation-delay-200 border border-gray-700">
+                    <div class="project-image-container flex-shrink-0 md:w-1/3">
+                        <a href="https://github.com/ChitturiDurgakishore/Mediguide" target="_blank" class="block">
+                            <img src="https://placehold.co/250x250/2d2d2d/cccccc?text=Medi-Guide" alt="Medi-Guide App" class="w-full h-auto object-cover rounded-3xl border-4 border-gray-600" onerror="this.onerror=null;this.src='https://placehold.co/250x250/2d2d2d/cccccc?text=Medi-Guide';">
+                            <div class="project-details text-sm md:text-base">Click on image to visit <br> Medi-Guide GitHub</div>
+                        </a>
                     </div>
-                    <div class="about-section-description">
-                        <center><h1>ACHIVEMENTS</h1></center>
-                        <ul>
-                         <li><h3>Top 8 among 38 Teams in SPECATHON </h3></li>
-                          <li><h3>Won 1st Prize in Kabaddi</h3></li>
-                            <li><h3>Won 2nd Prize in Handball</h3></li>
-                          <li><h3>Won 1st Prize in Basketball</h3></li>
+                    <div class="text-center md:text-left flex-grow md:w-2/3">
+                        <h3 class="text-3xl font-bold text-orange-300 underline mb-2">MEDI-GUIDE</h3>
+                        <ul class="text-lg text-gray-200 leading-relaxed list-disc pl-5 space-y-2 mb-4">
+                            <li>User-friendly application for efficient medication management.</li>
+                            <li>Tracks prescriptions, provides dosage reminders, and offers essential health information.</li>
+                            <li>Simplifies healthcare management with intuitive features and a clean interface.</li>
+                            <li>Ensures users stay informed and organized about their medical needs.</li>
                         </ul>
+                        <h4 class="text-xl font-semibold text-sky-400"><a href="https://medi-guide.free.nf/" target="_blank">Website Link</a></h4>
                     </div>
+                </div>
+
+                <!-- Student-Sphere Project -->
+                <div class="flex flex-col md:flex-row items-center bg-gray-800 p-6 rounded-3xl shadow-lg gap-6 animate-fade-in-right animation-delay-400 border border-gray-700">
+                    <div class="project-image-container flex-shrink-0 md:w-1/3">
+                        <a href="https://studentsphere.free.nf/" target="_blank" class="block">
+                            <img src="https://placehold.co/250x250/2d2d2d/cccccc?text=Student-Sphere" alt="Student-Sphere App" class="w-full h-auto object-cover rounded-3xl border-4 border-gray-600" onerror="this.onerror=null;this.src='https://placehold.co/250x250/2d2d2d/cccccc?text=Student-Sphere';">
+                            <div class="project-details text-sm md:text-base">Click on image to visit <br> Student-Sphere Website</div>
+                        </a>
+                    </div>
+                    <div class="text-center md:text-left flex-grow md:w-2/3">
+                        <h3 class="text-3xl font-bold text-orange-300 underline mb-2">STUDENT-SPHERE</h3>
+                        <ul class="text-lg text-gray-200 leading-relaxed list-disc pl-5 space-y-2 mb-4">
+                            <li>Website based on JS for student users to upload study material and PDFs.</li>
+                            <li>Allows other students to easily access shared resources.</li>
+                            <li>Provides convenient access, saving time and storage.</li>
+                        </ul>
+                        <h4 class="text-xl font-semibold text-sky-400"><a href="https://studentsphere.free.nf/" target="_blank">Website Link</a></h4>
+                    </div>
+                </div>
+
+                <!-- Laravel CRUD API Project (Text Only) -->
+                <div class="col-span-1 lg:col-span-2 bg-gray-800 p-8 rounded-3xl shadow-lg text-center animate-fade-in-up animation-delay-600 border border-gray-700">
+                    <h3 class="text-3xl font-bold text-orange-300 underline mb-2">Laravel CRUD API</h3>
+                    <p class="text-lg text-gray-200 leading-relaxed mb-4">
+                        Built a lightweight Laravel API focused on Create and Read operations to manage a database.
+                    </p>
+                    <p class="text-md text-gray-400">
+                        <span class="font-bold">Tech Stack:</span> Laravel, MySQL, RESTful API (Create & Read), Thunder Client
+                    </p>
                 </div>
             </div>
         </div>
-    </div>
+    </section>
+
+    <!-- Certifications & Achievements Section -->
+    <section id="achievements" class="bg-gradient-to-br from-fuchsia-950 to-pink-900 py-16 md:py-24 overflow-hidden">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-4xl md:text-5xl font-extrabold text-white mb-12 animate-fade-in-down">Certifications & Achievements</h2>
+            <div class="bg-gray-800 p-8 rounded-3xl shadow-xl mb-12 animate-fade-in-up animation-delay-200 border border-gray-700">
+                <ul class="list-disc list-inside text-lg md:text-xl text-gray-200 text-left space-y-3">
+                    <li>Certified ServiceNow System Administrator</li>
+                    <li>Secured Top 8 position among 36 teams in SPECATHON</li>
+                    <li>Achieved 100+ days LeetCode streak while practicing DSA</li>
+                    <li>Won 1st Prize in Kabaddi</li>
+                    <li>Won 2nd Prize in Handball</li>
+                    <li>Won 1st Prize in Basketball</li>
+                </ul>
+            </div>
+            <div class="achievements-grid animate-fade-in-up animation-delay-400">
+                <img src="https://placehold.co/280x280/333333/999999?text=SPECATHON" alt="SPECATHON" onerror="this.onerror=null;this.src='https://placehold.co/280x280/333333/999999?text=SPECATHON';">
+                <img src="https://placehold.co/280x280/333333/999999?text=Kabaddi+1" alt="Kabaddi" onerror="this.onerror=null;this.src='https://placehold.co/280x280/333333/999999?text=Kabaddi+1';">
+                <img src="https://placehold.co/280x280/333333/999999?text=CodeStrom" alt="CodeStrome" onerror="this.onerror=null;this.src='https://placehold.co/280x280/333333/999999?text=CodeStrom';">
+                <img src="https://placehold.co/280x280/333333/999999?text=Kabaddi+2" alt="Kabaddi" onerror="this.onerror=null;this.src='https://placehold.co/280x280/333333/999999?text=Kabaddi+2';">
+                <img src="https://placehold.co/280x280/333333/999999?text=Handball" alt="Handball" onerror="this.onerror=null;this.src='https://placehold.co/280x280/333333/999999?text=Handball';">
+                <img src="https://placehold.co/280x280/333333/999999?text=Kabaddi+3" alt="Kabaddi" onerror="this.onerror=null;this.src='https://placehold.co/280x280/333333/999999?text=Kabaddi+3';">
+                <img src="https://placehold.co/280x280/333333/999999?text=Kabaddi+4" alt="Kabaddi" onerror="this.onerror=null;this.src='https://placehold.co/280x280/333333/999999?text=Kabaddi+4';">
+                <img src="https://placehold.co/280x280/333333/999999?text=Kabaddi+5" alt="Kabaddi" onerror="this.onerror=null;this.src='https://placehold.co/280x280/333333/999999?text=Kabaddi+5';">
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer / Contact Section -->
+    <footer class="bg-gray-950 py-8 text-center text-white">
+        <div class="container mx-auto px-4">
+            <p class="text-lg mb-2 text-gray-400">chitturidurgakishore@gmail.com</p>
+            <p class="text-lg mb-4 text-gray-400">+91 8978397465</p>
+            <div class="flex justify-center space-x-6">
+                <a href="https://github.com/ChitturiDurgakishore?tab=repositories" target="_blank" class="text-gray-400 hover:text-white transition duration-300 transform hover:scale-110">
+                    <img src="https://placehold.co/30x30/1A202C/FFFFFF?text=GH" alt="GitHub" class="w-8 h-8 rounded-full" onerror="this.onerror=null;this.src='https://placehold.co/30x30/1A202C/FFFFFF';">
+                </a>
+                <a href="https://www.linkedin.com/in/durga-kishore-chitturi" target="_blank" class="text-gray-400 hover:text-white transition duration-300 transform hover:scale-110">
+                    <img src="https://placehold.co/30x30/0077B5/FFFFFF?text=LI" alt="LinkedIn" class="w-8 h-8 rounded-full" onerror="this.onerror=null;this.src='https://placehold.co/30x30/0077B5/FFFFFF';">
+                </a>
+                <a href="https://leetcode.com/u/ChitturiDurgaKishore/" target="_blank" class="text-gray-400 hover:text-white transition duration-300 transform hover:scale-110">
+                    <img src="https://placehold.co/30x30/FFA116/FFFFFF?text=LC" alt="LeetCode" class="w-8 h-8 rounded-full" onerror="this.onerror=null;this.src='https://placehold.co/30x30/FFA116/FFFFFF';">
+                </a>
+            </div>
+            <p class="mt-8 text-sm text-gray-500">&copy; 2025 Durga Kishore. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const menuButton = document.getElementById('menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const navLinks = mobileMenu.querySelectorAll('a');
+
+            // Toggle mobile menu visibility
+            menuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('active');
+            });
+
+            // Hide mobile menu when a link is clicked
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.remove('active');
+                });
+            });
+
+            // Smooth scrolling for navigation links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+        });
+    </script>
 </body>
 </html>
