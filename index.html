@@ -4,10 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Durga Kishore - Portfolio</title>
-    <!-- Favicon - using a placeholder image for demonstration -->
     <link rel="icon" type="image/png" href="https://placehold.co/32x32/1E3A8A/ffffff?text=DK">
 
-    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
 
     <style>
@@ -181,14 +179,32 @@
                 padding-bottom: 6rem; /* 96px */
             }
         }
+
+        /* Styles for the "View All" link */
+        .view-all-link {
+            display: inline-block;
+            margin-top: 2rem;
+            padding: 0.75rem 2rem;
+            background-color: #38bdf8; /* sky-400 */
+            color: #1a1a1a; /* Dark text for contrast */
+            font-weight: 700; /* Extra bold */
+            border-radius: 9999px; /* Full rounded */
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            text-decoration: none;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .view-all-link:hover {
+            background-color: #7dd3fc; /* sky-300 */
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+        }
     </style>
 </head>
 <body class="antialiased">
-    <!-- Header Section -->
     <header id="header" class="w-full bg-gradient-to-r from-gray-950 to-gray-800 py-4 shadow-lg sticky top-0 z-50">
         <div class="container mx-auto px-4 flex items-center justify-between">
             <h1 class="text-4xl font-extrabold text-emerald-400 font-['Segoe_UI']">DURGA KISHORE</h1>
-            <!-- Mobile Menu Button (Hamburger) -->
             <button id="menu-button" class="md:hidden text-white focus:outline-none">
                 <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
@@ -198,35 +214,33 @@
                 <ul class="flex flex-col md:flex-row space-y-3 md:space-y-0 md:space-x-8">
                     <li><a href="#home" class="btn-primary">HOME</a></li>
                     <li><a href="https://drive.google.com/file/d/1GGDgezz1FXtEumMZJMKUB2QZ984ByUSR/view?usp=sharing" target="_blank" class="btn-primary">RESUME</a></li>
-                   <li><a href="certificates.html" class="btn-primary">CERTIFICATES</a></li>
+                    <li><a href="certifications.html" class="btn-primary">CERTIFICATIONS & ACHIEVEMENTS</a></li>
                     <li><a href="mailto:chitturidurgakishore@gmail.com" class="btn-primary">CONTACT</a></li>
                 </ul>
             </nav>
         </div>
-        <!-- Mobile Menu (toggled by JS) -->
         <nav id="mobile-menu" class="nav-links md:hidden bg-gray-900 py-4 text-center">
             <ul class="flex flex-col space-y-4">
                 <li><a href="#home" class="block py-2 text-white text-lg hover:bg-gray-700 rounded-md mx-4">HOME</a></li>
                 <li><a href="https://drive.google.com/file/d/1OX8O64_p68av2xR_pkr1Jo6kdYFg086Z/view?usp=sharing" target="_blank" class="block py-2 text-white text-lg hover:bg-gray-700 rounded-md mx-4">RESUME</a></li>
-                <li><a href="certificates.html" class="block py-2 text-white text-lg hover:bg-gray-700 rounded-md mx-4">CERTIFICATES</a></li>
+                <li><a href="certifications.html" class="block py-2 text-white text-lg hover:bg-gray-700 rounded-md mx-4">CERTIFICATIONS & ACHIEVEMENTS</a></li>
                 <li><a href="mailto:chitturidurgakishore@gmail.com" class="block py-2 text-white text-lg hover:bg-gray-700 rounded-md mx-4">CONTACT</a></li>
             </ul>
         </nav>
     </header>
 
-    <!-- Hero Section -->
     <section id="home" class="bg-gradient-to-br from-gray-900 to-indigo-950 py-16 md:py-24 overflow-hidden">
         <div class="container mx-auto px-4 flex flex-col md:flex-row items-center justify-center gap-10 md:gap-20">
             <div class="text-center md:text-left md:w-1/2 lg:w-2/3">
                 <h1 class="text-5xl md:text-6xl font-extrabold text-white mb-4 animate-fade-in-down">Hi! I Am Kishore</h1>
                 <h4 class="text-2xl md:text-3xl font-semibold text-cyan-400 italic mb-4 animate-fade-in-left animation-delay-200"><i>Full Stack Developer</i></h4>
-                <ul class="text-lg md:text-xl text-gray-200 leading-relaxed font-['Inter'] list-disc pl-5 animate-fade-in-up animation-delay-600 space-y-2">
-                     <div class="text-center md:text-left md:w-1/2 lg:w-2/3 p-8 bg-gray-800 rounded-3xl shadow-xl animate-fade-in-right animation-delay-200 border border-gray-700">
-                    <li>Passionate about Data structures,algorithms, and Backend development.</li>
-                    <li>Craft optimized solutions, design scalable architectures, and build seamless integrations.</li>
-                    <li>Focused on driving efficiency and performance in every project.</li>
-                     </div>
-                </ul>
+                <div class="text-center md:text-left p-8 bg-gray-800 rounded-3xl shadow-xl animate-fade-in-right animation-delay-200 border border-gray-700">
+                    <ul class="text-lg md:text-xl text-gray-200 leading-relaxed font-['Inter'] list-disc pl-5 space-y-2">
+                        <li>Passionate about **Data Structures**, **Algorithms**, and **Backend Development**.</li>
+                        <li>Craft optimized solutions, design scalable architectures, and build seamless integrations.</li>
+                        <li>Focused on driving efficiency and performance in every project.</li>
+                    </ul>
+                </div>
                 <div class="flex justify-center md:justify-start mt-10 space-x-7 animate-fade-in-up animation-delay-800">
                     <a href="https://github.com/ChitturiDurgakishore?tab=repositories" target="_blank" class="transform hover:scale-110 transition duration-300">
                         <img src="github.png" alt="GitHub" class="w-12 h-12 rounded-full shadow-lg border-2 border-gray-600" onerror="this.onerror=null;this.src='https://placehold.co/48x48/1A202C/FFFFFF?text=GH';">
@@ -245,7 +259,6 @@
         </div>
     </section>
 
-    <!-- About Me Section -->
     <section id="about" class="bg-gradient-to-br from-gray-800 to-teal-900 py-16 md:py-24 overflow-hidden">
         <div class="container mx-auto px-4 flex flex-col-reverse md:flex-row items-center justify-center gap-10 md:gap-20">
             <div class="md:w-1/2 lg:w-1/3 flex justify-center mt-10 md:mt-0 animate-fade-in-up">
@@ -255,8 +268,8 @@
                 <h2 class="text-4xl md:text-5xl font-extrabold text-white mb-4 text-center">DURGA KISHORE</h2>
                 <h4 class="text-xl md:text-2xl font-semibold text-emerald-300 mb-6 text-center">About Me</h4>
                 <ul class="text-lg md:text-xl text-gray-200 leading-relaxed list-disc pl-5 space-y-2">
-                    <li>Hailing from the tech-driven heart of <b>Hitech City</b>, Hyderabad.</li>
-                    <li>Passionate <b>Software Engineer</b> with a keen eye for logic and innovation.</li>
+                    <li>Hailing from the tech-driven heart of **Hitech City**, Hyderabad.</li>
+                    <li>Passionate **Software Engineer** with a keen eye for logic and innovation.</li>
                     <li>Immerses daily in Data Structures & Algorithms, refining problem-solving skills.</li>
                     <li>Driven by innovation and continuous learning to contribute to impactful industry-level projects.</li>
                 </ul>
@@ -264,7 +277,6 @@
         </div>
     </section>
 
-    <!-- Skills Section -->
     <section id="skills" class="py-16 md:py-24 bg-gradient-to-br from-gray-900 to-fuchsia-950 overflow-hidden">
         <div class="container mx-auto px-4 text-center">
             <h2 class="text-4xl md:text-5xl font-extrabold text-white mb-12 animate-fade-in-down">Technical Skills</h2>
@@ -299,7 +311,6 @@
         </div>
     </section>
 
-    <!-- Experience Section -->
     <section id="experience" class="bg-gradient-to-br from-gray-800 to-blue-950 py-16 md:py-24 overflow-hidden">
         <div class="container mx-auto px-4 text-center">
             <h2 class="text-4xl md:text-5xl font-extrabold text-white mb-12 animate-fade-in-down">Professional Experience</h2>
@@ -314,12 +325,10 @@
         </div>
     </section>
 
-    <!-- Projects Section -->
     <section id="projects" class="bg-gradient-to-br from-gray-900 to-red-950 py-16 md:py-24 overflow-hidden">
         <div class="container mx-auto px-4 text-center">
             <h2 class="text-4xl md:text-5xl font-extrabold text-white mb-12 animate-fade-in-down">Project Experience</h2>
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
-                <!-- Medi-Guide Project -->
                 <div class="flex flex-col md:flex-row items-center bg-gray-800 p-6 rounded-3xl shadow-lg gap-6 animate-fade-in-left animation-delay-200 border border-gray-700">
                     <div class="project-image-container flex-shrink-0 md:w-1/2">
                         <a href="https://github.com/ChitturiDurgakishore/Mediguide" target="_blank" class="block">
@@ -339,7 +348,6 @@
                     </div>
                 </div>
 
-                <!-- Student-Sphere Project -->
                 <div class="flex flex-col md:flex-row items-center bg-gray-800 p-6 rounded-3xl shadow-lg gap-6 animate-fade-in-right animation-delay-400 border border-gray-700">
                     <div class="project-image-container flex-shrink-0 md:w-1/2">
                         <a href="https://studentsphere.free.nf/" target="_blank" class="block">
@@ -358,7 +366,6 @@
                     </div>
                 </div>
 
-                <!-- CMS Project -->
                 <div class="flex flex-col md:flex-row items-center bg-gray-800 p-6 rounded-3xl shadow-lg gap-6 animate-fade-in-up animation-delay-600 border border-gray-700">
                     <div class="project-image-container flex-shrink-0 md:w-1/2">
                         <a href="https://github.com/ChitturiDurgakishore/CMS-Content_Management_System-" target="_blank" class="block">
@@ -377,11 +384,9 @@
                     </div>
                 </div>
 
-                <!-- Laravel CRUD API Project -->
                 <div class="flex flex-col md:flex-row items-center bg-gray-800 p-6 rounded-3xl shadow-lg gap-6 animate-fade-in-up animation-delay-800 border border-gray-700">
                     <div class="project-image-container flex-shrink-0 md:w-1/2">
-                         <!-- Placeholder image for Laravel CRUD API Project. Replace with an actual image if available. -->
-                        <a href="https://github.com/ChitturiDurgakishore/CMS-Content_Management_System-" target="_blank" class="block">
+                            <a href="https://github.com/ChitturiDurgakishore/Laravel-api" target="_blank" class="block">
                             <img src="api.avif" alt="Laravel CRUD API Project" class="w-full h-auto object-cover rounded-3xl border-4 border-gray-600" onerror="this.onerror=null;this.src='https://placehold.co/250x250/2d2d2d/cccccc?text=API';">
                             <div class="project-details text-sm md:text-base">Click on image to visit <br> API GitHub</div>
                         </a>
@@ -393,13 +398,13 @@
                             <li>Designed for efficient database management.</li>
                             <li>Utilized Thunder Client for robust API testing.</li>
                         </ul>
+                        <h4 class="text-xl font-semibold text-sky-400"><a href="https://github.com/ChitturiDurgakishore/Laravel-api" target="_blank">GitHub Link</a></h4>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Certifications & Achievements Section -->
     <section id="achievements" class="bg-gradient-to-br from-fuchsia-950 to-pink-900 py-16 md:py-24 overflow-hidden">
         <div class="container mx-auto px-4 text-center">
             <h2 class="text-4xl md:text-5xl font-extrabold text-white mb-12 animate-fade-in-down">Certifications & Achievements</h2>
@@ -412,12 +417,13 @@
                     <li>Won 2nd Prize in Handball</li>
                     <li>Won 1st Prize in Basketball</li>
                 </ul>
+                <div class="mt-8">
+                    <a href="certifications.html" class="view-all-link">View All Certifications & Achievements</a>
+                </div>
             </div>
-
         </div>
     </section>
 
-    <!-- Footer / Contact Section -->
     <footer class="bg-gray-950 py-8 text-center text-white">
         <div class="container mx-auto px-4">
             <p class="text-lg mb-2 text-gray-400">chitturidurgakishore@gmail.com</p>
